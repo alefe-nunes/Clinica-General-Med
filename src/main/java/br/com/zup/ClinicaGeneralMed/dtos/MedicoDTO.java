@@ -10,7 +10,7 @@ public class MedicoDTO {
     private String nome;
     private String crm;
     private Especialidade especialidade;
-    private List <PacienteDTO> listaDePacientes = new ArrayList<>();
+    private List<PacienteDTO> listaDePacientes = new ArrayList<>();
 
     public MedicoDTO() {
     }
