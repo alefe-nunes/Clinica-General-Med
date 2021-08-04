@@ -1,4 +1,4 @@
-package br.com.zup.ClinicaGeneralMed.enus;
+package br.com.zup.ClinicaGeneralMed.enums;
 
 public enum Especialidades {
 
