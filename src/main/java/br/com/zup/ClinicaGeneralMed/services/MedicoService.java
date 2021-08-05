@@ -12,15 +12,17 @@ public class MedicoService {
 
     public MedicoDTO verificaMedico(MedicoDTO medico){
         for(MedicoDTO item : medicos){
-            if(item.getCrm().equals(medico.getCrm())){
+            if(item.getCRM().equals(medico.getCRM())){
                 throw new RuntimeException("Médico já existe!");
             }
         }
+
         return medico;
     }
 
     public MedicoDTO cadastrar(MedicoDTO medico){
         this.medicos.add(verificaMedico(medico));
+
         return medico;
     }
 

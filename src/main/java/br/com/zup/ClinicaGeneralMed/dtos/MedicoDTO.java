@@ -2,33 +2,24 @@ package br.com.zup.ClinicaGeneralMed.dtos;
 
 import br.com.zup.ClinicaGeneralMed.enuns.Especialidade;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MedicoDTO {
+public class MedicoDTO extends Pessoa {
 
-    private String nome;
-    private String crm;
+    private List<PacienteDTO> pacientes;
+    private String CRM;
     private Especialidade especialidade;
-    private List<PacienteDTO> listaDePacientes = new ArrayList<>();
 
     public MedicoDTO() {
+
     }
 
-    public String getNome() {
-        return nome;
+    public String getCRM() {
+        return CRM;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCrm() {
-        return crm;
-    }
-
-    public void setCrm(String crm) {
-        this.crm = crm;
+    public void setCRM(String CRM) {
+        this.CRM = CRM;
     }
 
     public Especialidade getEspecialidade() {
@@ -39,12 +30,12 @@ public class MedicoDTO {
         this.especialidade = especialidade;
     }
 
-    public List<PacienteDTO> getListaDePacientes() {
-        return listaDePacientes;
+    public List<PacienteDTO> getPacientes() {
+        return pacientes;
     }
 
-    public void setListaDePacientes(List<PacienteDTO> listaDePacientes) {
-        this.listaDePacientes = listaDePacientes;
+    public void setPacientes(List<PacienteDTO> pacientes) {
+        this.pacientes = pacientes;
     }
 }
 
