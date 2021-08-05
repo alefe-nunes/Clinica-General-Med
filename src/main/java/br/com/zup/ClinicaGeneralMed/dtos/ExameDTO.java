@@ -2,7 +2,6 @@ package br.com.zup.ClinicaGeneralMed.dtos;
 
 import br.com.zup.ClinicaGeneralMed.enuns.TipoDeExame;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 public class ExameDTO {
