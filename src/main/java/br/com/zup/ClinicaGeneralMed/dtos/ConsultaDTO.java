@@ -4,12 +4,21 @@ import java.util.Date;
 
 public class ConsultaDTO {
 
+    private String codConsulta;
     private PacienteDTO pacienteDTO;
     private MedicoDTO medicoDTO;
     private Date date;
     private Boolean pedidoExame;
 
     public ConsultaDTO() {
+    }
+
+    public String getCodConsulta() {
+        return codConsulta;
+    }
+
+    public void setCodConsulta(String codConsulta) {
+        this.codConsulta = codConsulta;
     }
 
     public PacienteDTO getPacienteDTO() {

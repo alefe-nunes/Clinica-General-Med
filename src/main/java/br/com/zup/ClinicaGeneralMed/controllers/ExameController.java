@@ -25,4 +25,9 @@ public class ExameController {
 
     }
 
+    @DeleteMapping("/{codigo}")
+    public List<ExameDTO> deletarExame(@PathVariable String codigo){
+        return exameService.deletarExame(codigo);
+    }
+
 }

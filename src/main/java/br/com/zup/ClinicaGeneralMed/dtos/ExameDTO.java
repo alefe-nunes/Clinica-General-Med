@@ -7,12 +7,21 @@ import java.util.Date;
 
 public class ExameDTO {
 
+    private String codExame;
     private PacienteDTO pacienteDTO;
     private MedicoDTO medicoDTO;
     private TipoDeExame tipoDeExame;
     private Date date;
 
     public ExameDTO() {
+    }
+
+    public String getCodExame() {
+        return codExame;
+    }
+
+    public void setCodExame(String codExame) {
+        this.codExame = codExame;
     }
 
     public PacienteDTO getPacienteDTO() {

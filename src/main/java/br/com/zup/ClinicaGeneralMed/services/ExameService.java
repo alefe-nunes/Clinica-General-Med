@@ -38,6 +38,12 @@ public class ExameService {
 
     }
 
+    public List<ExameDTO> deletarExame(String codigo){
+        if(exames.removeIf(exame -> exame.getCodExame().equals(codigo))){
+            return this.exames;
+        }
+        throw new RuntimeException("Nenhum exame encontrado!");
+    }
 
 }
 

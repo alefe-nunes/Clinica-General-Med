@@ -28,7 +28,6 @@ public class ConsultaService {
 
     }
 
-
     public ConsultaDTO cadastrarConsulta(ConsultaDTO consulta) {
         MedicoDTO medico = medicoService.validaMedico(consulta.getMedicoDTO());
         PacienteDTO paciente = pacienteService.validaPaciente(consulta.getPacienteDTO());
@@ -41,8 +40,15 @@ public class ConsultaService {
         return consulta;
     }
 
-    public List <ConsultaDTO> exibirConsulta () {
+    public List<ConsultaDTO> exibirConsulta () {
         return this.consultas;
+    }
+
+    public List<ConsultaDTO> deletarConsulta(String codigo){
+        if(this.consultas.removeIf(consulta -> consulta.getCodConsulta().equals(codigo))){
+            return this.consultas;
+        }
+        throw new RuntimeException("Nenhuma consulta encontrada!");
     }
 
 }
