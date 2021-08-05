@@ -15,16 +15,19 @@ public class ExameService {
     private ConsultaService consultaService;
     private List<ExameDTO> exames = new ArrayList<>();
 
-    public void verificaExame(ExameDTO exame) {
+    public ConsultaDTO verificaExame(ExameDTO exame) {
         for (ConsultaDTO item : consultaService.exibirConsulta()) {
-            if (!item.getPedidoExame()) {
-                throw new RuntimeException("Exame não aprovado!");
+            if (item.getPedidoExame()) {
+                return item;
             }
         }
+        throw new RuntimeException("Exame não aprovado!");
     }
 
     public ExameDTO cadastrarExame(ExameDTO exame) {
-        verificaExame(exame);
+        ConsultaDTO consulta =  verificaExame(exame);
+        exame.setMedicoDTO(consulta.getMedicoDTO());
+        exame.setPacienteDTO(consulta.getPacienteDTO());
         this.exames.add(exame);
 
         return exame;
