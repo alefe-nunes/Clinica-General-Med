@@ -2,11 +2,12 @@ package br.com.zup.ClinicaGeneralMed.dtos;
 
 import br.com.zup.ClinicaGeneralMed.enuns.Especialidade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MedicoDTO extends Pessoa {
 
-    private List<PacienteDTO> pacientes;
+    private List<PacienteDTO> pacientes = new ArrayList<>();
     private String CRM;
     private Especialidade especialidade;
 
