@@ -1,6 +1,8 @@
 package br.com.zup.ClinicaGeneralMed.services;
 
 import br.com.zup.ClinicaGeneralMed.dtos.ConsultaDTO;
+import br.com.zup.ClinicaGeneralMed.dtos.MedicoDTO;
+import br.com.zup.ClinicaGeneralMed.dtos.PacienteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,6 @@ public class ConsultaService {
             if (item.getDate().equals(consulta.getDate()) && item.getPacienteDTO().equals(consulta.getPacienteDTO())) {
                 throw new RuntimeException("Consulta não pode ser marcada nessa data");
             }
-
         }
         return consulta;
 
@@ -29,10 +30,13 @@ public class ConsultaService {
 
 
     public ConsultaDTO cadastrarConsulta(ConsultaDTO consulta) {
-        medicoService.verificaMedico(consulta.getMedicoDTO());
-        pacienteService.verificaPaciente(consulta.getPacienteDTO());
+        MedicoDTO medico = medicoService.validaMedico(consulta.getMedicoDTO());
+        PacienteDTO paciente = pacienteService.validaPaciente(consulta.getPacienteDTO());
+        consulta.setMedicoDTO(medico);
+        consulta.setPacienteDTO(paciente);
         verificaConsulta(consulta);
         this.consultas.add(consulta);
+        medico.getPacientes().add(paciente);
 
         return consulta;
     }
