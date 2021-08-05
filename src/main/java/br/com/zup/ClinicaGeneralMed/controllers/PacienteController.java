@@ -14,7 +14,7 @@ public class PacienteController {
     private PacienteService pacienteService;
 
     @PostMapping
-    public PacienteDTO pacinete(@RequestBody PacienteDTO paciente){
+    public PacienteDTO paciente(@RequestBody PacienteDTO paciente){
         return pacienteService.cadastrar(paciente);
     }
 
