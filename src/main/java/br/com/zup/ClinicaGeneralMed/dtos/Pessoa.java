@@ -4,12 +4,12 @@ import javax.validation.constraints.NotBlank;
 
 public abstract class Pessoa {
 
-    @NotBlank (message = "{validacao.nome}")
+    @NotBlank(message = "{validacao.nome}")
     private String nome;
-    @NotBlank (message = "{validacao.cpf}")
+    @NotBlank(message = "{validacao.cpf}")
     private String cpf;
-    @NotBlank (message = "{validacao.endereco}")
-    private  String endereco;
+    @NotBlank(message = "{validacao.endereco}")
+    private String endereco;
     private String telefone;
 
     public Pessoa() {

@@ -10,9 +10,9 @@ import java.util.List;
 public class MedicoDTO extends Pessoa {
 
     private List<PacienteDTO> pacientes = new ArrayList<>();
-    @NotBlank (message = "{validacao.crm}")
+    @NotBlank(message = "{validacao.crm}")
     private String CRM;
-    @NotNull (message = "{validacao.especilidade}")
+    @NotNull(message = "{validacao.especilidade}")
     private Especialidade especialidade;
 
     public MedicoDTO() {

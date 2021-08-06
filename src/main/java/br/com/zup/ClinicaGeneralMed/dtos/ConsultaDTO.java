@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 public class ConsultaDTO {
 
     private String codConsulta;
-    private PacienteDTO pacienteDTO;
-    private MedicoDTO medicoDTO;
+    private PacienteDTO paciente;
+    private MedicoDTO medico;
     private LocalDateTime date;
     private Boolean pedidoExame;
 
@@ -22,19 +22,19 @@ public class ConsultaDTO {
     }
 
     public PacienteDTO getPacienteDTO() {
-        return pacienteDTO;
+        return paciente;
     }
 
     public void setPacienteDTO(PacienteDTO pacienteDTO) {
-        this.pacienteDTO = pacienteDTO;
+        this.paciente = pacienteDTO;
     }
 
     public MedicoDTO getMedicoDTO() {
-        return medicoDTO;
+        return medico;
     }
 
     public void setMedicoDTO(MedicoDTO medicoDTO) {
-        this.medicoDTO = medicoDTO;
+        this.medico = medicoDTO;
     }
 
     public LocalDateTime getDate() {

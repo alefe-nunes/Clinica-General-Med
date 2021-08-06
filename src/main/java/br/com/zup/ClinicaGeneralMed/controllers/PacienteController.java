@@ -14,12 +14,12 @@ public class PacienteController {
     private PacienteService pacienteService;
 
     @PostMapping
-    public PacienteDTO paciente(@RequestBody PacienteDTO paciente){
+    public PacienteDTO paciente(@RequestBody PacienteDTO paciente) {
         return pacienteService.cadastrar(paciente);
     }
 
     @GetMapping
-    public List<PacienteDTO> pacientes(){
+    public List<PacienteDTO> pacientes() {
         return pacienteService.exibir();
     }
 

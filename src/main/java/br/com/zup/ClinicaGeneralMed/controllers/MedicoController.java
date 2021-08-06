@@ -14,12 +14,12 @@ public class MedicoController {
     private MedicoService medicoService;
 
     @PostMapping
-    public MedicoDTO cadastrarMedico(@RequestBody MedicoDTO medico){
+    public MedicoDTO cadastrarMedico(@RequestBody MedicoDTO medico) {
         return medicoService.cadastrar(medico);
     }
 
     @GetMapping
-    public List<MedicoDTO> exibir(){
+    public List<MedicoDTO> exibir() {
         return medicoService.exibir();
     }
 

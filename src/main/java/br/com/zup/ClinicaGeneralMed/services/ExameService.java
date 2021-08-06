@@ -19,9 +19,9 @@ public class ExameService {
     public ConsultaDTO verificaPedidoExame(ExameDTO exame) {
         ConsultaDTO consulta = null;
         for (ConsultaDTO item : consultaService.exibirConsulta()) {
-            if(item.getMedicoDTO().getCRM().equals(exame.getMedicoDTO().getCRM())) {
+            if (item.getMedicoDTO().getCRM().equals(exame.getMedicoDTO().getCRM())) {
                 consulta = item;
-                if(consulta.getPedidoExame()){
+                if (consulta.getPedidoExame()) {
                     return consulta;
                 }
             }
@@ -33,9 +33,9 @@ public class ExameService {
         for (ExameDTO item : exames) {
             if (item.getCodExame().equals(exame.getCodExame())) {
                 throw new ErroGeralException("Exame já marcado!");
-            } else if(item.getDate().equals(exame.getDate()) && item.getMedicoDTO().getCRM().equals(exame.getMedicoDTO().getCRM())){
+            } else if (item.getDate().equals(exame.getDate()) && item.getMedicoDTO().getCRM().equals(exame.getMedicoDTO().getCRM())) {
                 throw new ErroGeralException("Exame não pode ser marcado nessa data e/ou hora!");
-            } else if(item.getDate().equals(exame.getDate()) && item.getPacienteDTO().getCpf().equals(exame.getPacienteDTO().getCpf())){
+            } else if (item.getDate().equals(exame.getDate()) && item.getPacienteDTO().getCpf().equals(exame.getPacienteDTO().getCpf())) {
                 throw new ErroGeralException("Já há um exame marcado para esse paciente nesse horário!");
             }
         }
@@ -44,9 +44,9 @@ public class ExameService {
 
     }
 
-    public ExameDTO validarExame(ExameDTO exame){
+    public ExameDTO validarExame(ExameDTO exame) {
         LocalDateTime hoje = LocalDateTime.now();
-        if(exame.getDate().isBefore(hoje)){
+        if (exame.getDate().isBefore(hoje)) {
             throw new ErroGeralException("Data inválida!");
         }
         return exame;
@@ -62,21 +62,21 @@ public class ExameService {
         return exame;
     }
 
-    public List <ExameDTO> exibirExames () {
+    public List<ExameDTO> exibirExames() {
         return this.exames;
 
     }
 
-    public List<ExameDTO> deletarExame(String codigo){
-        if(exames.removeIf(exame -> exame.getCodExame().equals(codigo))){
+    public List<ExameDTO> deletarExame(String codigo) {
+        if (exames.removeIf(exame -> exame.getCodExame().equals(codigo))) {
             return this.exames;
         }
         throw new ErroGeralException("Nenhum exame encontrado!");
     }
 
-    public ExameDTO remarcarExame(String codigo, ExameDTO exame){
-        for(ExameDTO item : exames){
-            if(item.getCodExame().equals(codigo)){
+    public ExameDTO remarcarExame(String codigo, ExameDTO exame) {
+        for (ExameDTO item : exames) {
+            if (item.getCodExame().equals(codigo)) {
                 item.setDate(validarExame(exame).getDate());
                 return item;
             }

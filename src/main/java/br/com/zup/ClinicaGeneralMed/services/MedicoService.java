@@ -11,9 +11,9 @@ import java.util.List;
 public class MedicoService {
     private List<MedicoDTO> medicos = new ArrayList<>();
 
-    public MedicoDTO verificaMedico(MedicoDTO medico){
-        for(MedicoDTO item : medicos){
-            if(item.getCRM().equals(medico.getCRM())){
+    public MedicoDTO verificaMedico(MedicoDTO medico) {
+        for (MedicoDTO item : medicos) {
+            if (item.getCRM().equals(medico.getCRM())) {
                 throw new ErroGeralException("Médico já existe!");
             }
         }
@@ -21,22 +21,22 @@ public class MedicoService {
         return medico;
     }
 
-    public MedicoDTO validaMedico(MedicoDTO medico){
-        for(MedicoDTO item : medicos){
-            if(item.getCRM().equals(medico.getCRM())){
+    public MedicoDTO validaMedico(MedicoDTO medico) {
+        for (MedicoDTO item : medicos) {
+            if (item.getCRM().equals(medico.getCRM())) {
                 return item;
             }
         }
         throw new ErroGeralException("Médico não cadastrado!");
     }
 
-    public MedicoDTO cadastrar(MedicoDTO medico){
+    public MedicoDTO cadastrar(MedicoDTO medico) {
         this.medicos.add(verificaMedico(medico));
 
         return medico;
     }
 
-    public List<MedicoDTO> exibir(){
+    public List<MedicoDTO> exibir() {
         return this.medicos;
     }
 
