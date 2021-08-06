@@ -2,6 +2,7 @@ package br.com.zup.ClinicaGeneralMed.services;
 
 import br.com.zup.ClinicaGeneralMed.dtos.ConsultaDTO;
 import br.com.zup.ClinicaGeneralMed.dtos.ExameDTO;
+import br.com.zup.ClinicaGeneralMed.exceptions.ErroGeralException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,17 +26,17 @@ public class ExameService {
                 }
             }
         }
-        throw new RuntimeException("Exame não aprovado!");
+        throw new ErroGeralException("Exame não aprovado!");
     }
 
     public ExameDTO verificarDuplicidade(ExameDTO exame) {
         for (ExameDTO item : exames) {
             if (item.getCodExame().equals(exame.getCodExame())) {
-                throw new RuntimeException("Exame já marcado!");
+                throw new ErroGeralException("Exame já marcado!");
             } else if(item.getDate().equals(exame.getDate()) && item.getMedicoDTO().getCRM().equals(exame.getMedicoDTO().getCRM())){
-                throw new RuntimeException("Exame não pode ser marcado nessa data e/ou hora!");
+                throw new ErroGeralException("Exame não pode ser marcado nessa data e/ou hora!");
             } else if(item.getDate().equals(exame.getDate()) && item.getPacienteDTO().getCpf().equals(exame.getPacienteDTO().getCpf())){
-                throw new RuntimeException("Já há um exame marcado para esse paciente nesse horário!");
+                throw new ErroGeralException("Já há um exame marcado para esse paciente nesse horário!");
             }
         }
         validarExame(exame);
@@ -46,7 +47,7 @@ public class ExameService {
     public ExameDTO validarExame(ExameDTO exame){
         LocalDateTime hoje = LocalDateTime.now();
         if(exame.getDate().isBefore(hoje)){
-            throw new RuntimeException("Data inválida!");
+            throw new ErroGeralException("Data inválida!");
         }
         return exame;
     }
@@ -70,7 +71,7 @@ public class ExameService {
         if(exames.removeIf(exame -> exame.getCodExame().equals(codigo))){
             return this.exames;
         }
-        throw new RuntimeException("Nenhum exame encontrado!");
+        throw new ErroGeralException("Nenhum exame encontrado!");
     }
 
     public ExameDTO remarcarExame(String codigo, ExameDTO exame){
@@ -80,7 +81,7 @@ public class ExameService {
                 return item;
             }
         }
-        throw new RuntimeException("Exame não encontrado!");
+        throw new ErroGeralException("Exame não encontrado!");
     }
 
 }
