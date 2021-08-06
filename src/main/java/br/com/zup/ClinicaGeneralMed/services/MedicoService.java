@@ -1,7 +1,7 @@
 package br.com.zup.ClinicaGeneralMed.services;
 
 import br.com.zup.ClinicaGeneralMed.dtos.MedicoDTO;
-import br.com.zup.ClinicaGeneralMed.dtos.PacienteDTO;
+import br.com.zup.ClinicaGeneralMed.exceptions.ErroGeralException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class MedicoService {
     public MedicoDTO verificaMedico(MedicoDTO medico){
         for(MedicoDTO item : medicos){
             if(item.getCRM().equals(medico.getCRM())){
-                throw new RuntimeException("Médico já existe!");
+                throw new ErroGeralException("Médico já existe!");
             }
         }
 
@@ -27,7 +27,7 @@ public class MedicoService {
                 return item;
             }
         }
-        throw new RuntimeException("Médico não cadastrado!");
+        throw new ErroGeralException("Médico não cadastrado!");
     }
 
     public MedicoDTO cadastrar(MedicoDTO medico){

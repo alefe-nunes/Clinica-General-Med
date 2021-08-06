@@ -3,10 +3,10 @@ package br.com.zup.ClinicaGeneralMed.services;
 import br.com.zup.ClinicaGeneralMed.dtos.ConsultaDTO;
 import br.com.zup.ClinicaGeneralMed.dtos.MedicoDTO;
 import br.com.zup.ClinicaGeneralMed.dtos.PacienteDTO;
+import br.com.zup.ClinicaGeneralMed.exceptions.ErroGeralException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +23,11 @@ public class ConsultaService {
     public ConsultaDTO verificarDuplicidade(ConsultaDTO consulta) {
         for (ConsultaDTO item : consultas) {
             if (item.getCodConsulta().equals(consulta.getCodConsulta())) {
-                throw new RuntimeException("Consulta já marcada!");
+                throw new ErroGeralException("Consulta já marcada!");
             } else if(item.getDate().equals(consulta.getDate()) && item.getMedicoDTO().getCRM().equals(consulta.getMedicoDTO().getCRM())){
-                throw new RuntimeException("Consulta não pode ser marcada nessa data e/ou hora!");
+                throw new ErroGeralException("Consulta não pode ser marcada nessa data e/ou hora!");
             } else if(item.getDate().equals(consulta.getDate()) && item.getPacienteDTO().getCpf().equals(consulta.getPacienteDTO().getCpf())){
-                throw new RuntimeException("Já há uma consulta marcada para esse paciente nesse horário!");
+                throw new ErroGeralException("Já há uma consulta marcada para esse paciente nesse horário!");
             }
         }
         validarConsulta(consulta);
@@ -38,7 +38,7 @@ public class ConsultaService {
     public ConsultaDTO validarConsulta(ConsultaDTO consulta){
         LocalDateTime hoje = LocalDateTime.now();
         if(consulta.getDate().isBefore(hoje)){
-            throw new RuntimeException("Data inválida!");
+            throw new ErroGeralException("Data inválida!");
         }
         return consulta;
     }
@@ -77,7 +77,7 @@ public class ConsultaService {
         if(this.consultas.removeIf(item -> item.getCodConsulta().equals(codigo))){
             return this.consultas;
         }
-        throw new RuntimeException("Consulta não encontrada!");
+        throw new ErroGeralException("Consulta não encontrada!");
     }
 
     public ConsultaDTO remarcarConsulta(String codigo, ConsultaDTO consulta){
@@ -87,7 +87,7 @@ public class ConsultaService {
                  return item;
              }
          }
-        throw new RuntimeException("Nenhuma consulta encontrada!");
+        throw new ErroGeralException("Nenhuma consulta encontrada!");
     }
 
 }
