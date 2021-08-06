@@ -2,17 +2,25 @@ package br.com.zup.ClinicaGeneralMed.dtos;
 
 import br.com.zup.ClinicaGeneralMed.enuns.TipoDeExame;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class ExameDTO {
 
+    private String codExame;
     private PacienteDTO pacienteDTO;
     private MedicoDTO medicoDTO;
     private TipoDeExame tipoDeExame;
-    private Date date;
+    private LocalDateTime date;
 
     public ExameDTO() {
+    }
+
+    public String getCodExame() {
+        return codExame;
+    }
+
+    public void setCodExame(String codExame) {
+        this.codExame = codExame;
     }
 
     public PacienteDTO getPacienteDTO() {
@@ -39,11 +47,11 @@ public class ExameDTO {
         this.tipoDeExame = tipoDeExame;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }
