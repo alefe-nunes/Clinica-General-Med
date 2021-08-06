@@ -24,9 +24,14 @@ public class ConsultaController {
         return consultaService.exibirConsulta();
     }
 
-    @DeleteMapping("/{codigo}")
+    @DeleteMapping("/remover/{codigo}")
     public List<ConsultaDTO> deletarConsulta(@PathVariable String codigo){
         return consultaService.deletarConsulta(codigo);
+    }
+
+    @PutMapping("/remarcar/{codigo}")
+    public ConsultaDTO remarcarConsulta(@PathVariable String codigo, @RequestBody ConsultaDTO consulta){
+        return consultaService.remarcarConsulta(codigo,consulta);
     }
 
 }

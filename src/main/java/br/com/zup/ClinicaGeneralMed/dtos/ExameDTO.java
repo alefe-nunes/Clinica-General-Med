@@ -2,8 +2,7 @@ package br.com.zup.ClinicaGeneralMed.dtos;
 
 import br.com.zup.ClinicaGeneralMed.enuns.TipoDeExame;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class ExameDTO {
 
@@ -11,7 +10,7 @@ public class ExameDTO {
     private PacienteDTO pacienteDTO;
     private MedicoDTO medicoDTO;
     private TipoDeExame tipoDeExame;
-    private Date date;
+    private LocalDateTime date;
 
     public ExameDTO() {
     }
@@ -48,11 +47,11 @@ public class ExameDTO {
         this.tipoDeExame = tipoDeExame;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }
