@@ -1,15 +1,24 @@
 package br.com.zup.ClinicaGeneralMed.dtos;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class ConsultaDTO {
 
+    private String codConsulta;
     private PacienteDTO pacienteDTO;
     private MedicoDTO medicoDTO;
-    private Date date;
+    private LocalDateTime date;
     private Boolean pedidoExame;
 
     public ConsultaDTO() {
+    }
+
+    public String getCodConsulta() {
+        return codConsulta;
+    }
+
+    public void setCodConsulta(String codConsulta) {
+        this.codConsulta = codConsulta;
     }
 
     public PacienteDTO getPacienteDTO() {
@@ -28,11 +37,11 @@ public class ConsultaDTO {
         this.medicoDTO = medicoDTO;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

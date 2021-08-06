@@ -25,4 +25,14 @@ public class ExameController {
 
     }
 
+    @PutMapping("/remarcar/{codigo}")
+    public ExameDTO remarcarExame(@PathVariable String codigo, @RequestBody ExameDTO exame){
+        return exameService.remarcarExame(codigo,exame);
+    }
+
+    @DeleteMapping("/remover/{codigo}")
+    public List<ExameDTO> deletarExame(@PathVariable String codigo){
+        return exameService.deletarExame(codigo);
+    }
+
 }
