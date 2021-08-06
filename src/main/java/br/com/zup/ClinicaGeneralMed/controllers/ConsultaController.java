@@ -15,8 +15,8 @@ public class ConsultaController {
     private ConsultaService consultaService;
 
     @PostMapping
-    public ConsultaDTO cadastrarConsulta(@RequestBody ConsultaDTO consultaDTO) {
-        return consultaService.cadastrarConsulta(consultaDTO);
+    public ConsultaDTO cadastrarConsulta(@RequestBody ConsultaDTO consulta) {
+        return consultaService.cadastrarConsulta(consulta);
     }
 
     @GetMapping
@@ -25,13 +25,13 @@ public class ConsultaController {
     }
 
     @DeleteMapping("/remover/{codigo}")
-    public List<ConsultaDTO> deletarConsulta(@PathVariable String codigo){
+    public List<ConsultaDTO> deletarConsulta(@PathVariable String codigo) {
         return consultaService.deletarConsulta(codigo);
     }
 
     @PutMapping("/remarcar/{codigo}")
-    public ConsultaDTO remarcarConsulta(@PathVariable String codigo, @RequestBody ConsultaDTO consulta){
-        return consultaService.remarcarConsulta(codigo,consulta);
+    public ConsultaDTO remarcarConsulta(@PathVariable String codigo, @RequestBody ConsultaDTO consulta) {
+        return consultaService.remarcarConsulta(codigo, consulta);
     }
 
 }

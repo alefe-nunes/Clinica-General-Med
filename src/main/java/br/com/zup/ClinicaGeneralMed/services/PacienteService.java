@@ -12,9 +12,9 @@ public class PacienteService {
 
     private List<PacienteDTO> pacientes = new ArrayList<>();
 
-    public PacienteDTO verificarDuplicidade(PacienteDTO paciente){
-        for(PacienteDTO item : pacientes){
-            if(item.getCpf().equals(paciente.getCpf())){
+    public PacienteDTO verificarDuplicidade(PacienteDTO paciente) {
+        for (PacienteDTO item : pacientes) {
+            if (item.getCpf().equals(paciente.getCpf())) {
                 throw new ErroGeralException("Paciente já existe!");
             }
         }
@@ -22,22 +22,22 @@ public class PacienteService {
         return paciente;
     }
 
-    public PacienteDTO validaPaciente(PacienteDTO paciente){
-        for(PacienteDTO item : pacientes){
-            if(item.getCpf().equals(paciente.getCpf())){
+    public PacienteDTO validaPaciente(PacienteDTO paciente) {
+        for (PacienteDTO item : pacientes) {
+            if (item.getCpf().equals(paciente.getCpf())) {
                 return item;
             }
         }
         throw new ErroGeralException("Paciente não cadastrado!");
     }
 
-    public PacienteDTO cadastrar(PacienteDTO paciente){
+    public PacienteDTO cadastrar(PacienteDTO paciente) {
         this.pacientes.add(verificarDuplicidade(paciente));
 
         return paciente;
     }
 
-    public List<PacienteDTO> exibir(){
+    public List<PacienteDTO> exibir() {
         return this.pacientes;
     }
 

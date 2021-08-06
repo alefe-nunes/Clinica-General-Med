@@ -15,8 +15,8 @@ public class ExameController {
     private ExameService exameService;
 
     @PostMapping
-    public ExameDTO cadastrarExame(@RequestBody ExameDTO exameDTO) {
-        return exameService.cadastrarExame(exameDTO);
+    public ExameDTO cadastrarExame(@RequestBody ExameDTO exame) {
+        return exameService.cadastrarExame(exame);
     }
 
     @GetMapping
@@ -26,12 +26,12 @@ public class ExameController {
     }
 
     @PutMapping("/remarcar/{codigo}")
-    public ExameDTO remarcarExame(@PathVariable String codigo, @RequestBody ExameDTO exame){
-        return exameService.remarcarExame(codigo,exame);
+    public ExameDTO remarcarExame(@PathVariable String codigo, @RequestBody ExameDTO exame) {
+        return exameService.remarcarExame(codigo, exame);
     }
 
     @DeleteMapping("/remover/{codigo}")
-    public List<ExameDTO> deletarExame(@PathVariable String codigo){
+    public List<ExameDTO> deletarExame(@PathVariable String codigo) {
         return exameService.deletarExame(codigo);
     }
 
