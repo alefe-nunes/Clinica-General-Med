@@ -5,6 +5,7 @@ import br.com.zup.ClinicaGeneralMed.services.MedicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -14,7 +15,7 @@ public class MedicoController {
     private MedicoService medicoService;
 
     @PostMapping
-    public MedicoDTO cadastrarMedico(@RequestBody MedicoDTO medico) {
+    public MedicoDTO cadastrarMedico(@RequestBody @Valid MedicoDTO medico) {
         return medicoService.cadastrar(medico);
     }
 
